@@ -1,1 +1,2 @@
 # DAA-basic-programming
+DAA-basic-programming is a repository of fundamental Design and Analysis of Algorithms (DAA) programs written in C. It includes implementations of searching, sorting, recursion, divide and conquer, greedy algorithms, dynamic programming, graph algorithms, matrix operations, and other core concepts. This repository is intended for beginners, students, interview preparation, and academic practice.
