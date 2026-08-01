@@ -51,8 +51,15 @@ int main() {
 
     return 0;
 } 
-scrolls: 7
-sorted Archive IDs:
-10 20 20 20 30 40 50
-Archive ID: 20
-Scroll found at position: 1
+output 1:
+//scrolls: 7
+//sorted Archive IDs:
+//10 20 20 20 30 40 50
+//Archive ID: 20
+//Scroll found at position: 1
+output 2:
+//scrolls: 6
+//sorted Archive IDs:
+//5 10 15 20 25 30
+/Archive ID: 18
+//Scroll not found
