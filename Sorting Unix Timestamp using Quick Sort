@@ -65,3 +65,11 @@ int main() {
 
     return 0;
 }
+//input:
+Enter number of log entries: 5
+Enter 5 Unix timestamps:
+1693456789
+1693000000
+1694001234
+1693205678
+1693101111
