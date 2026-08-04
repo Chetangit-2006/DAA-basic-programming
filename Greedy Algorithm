@@ -74,3 +74,6 @@ B 1 19
 C 2 27
 D 1 25
 E 3 15
+//output:
+Selected Jobs: C A E
+Total Profit = 142
