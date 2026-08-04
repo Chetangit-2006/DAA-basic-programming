@@ -63,3 +63,5 @@ Enter weight and profit of each item:
 20 100
 30 120
 Enter knapsack capacity: 50
+//output:
+Maximum Profit = 240.00
