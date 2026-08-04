@@ -66,3 +66,11 @@ int main() {
 
     return 0;
 }
+//input:
+Enter number of jobs: 5
+Enter Job ID, Deadline and Profit:
+A 2 100
+B 1 19
+C 2 27
+D 1 25
+E 3 15
