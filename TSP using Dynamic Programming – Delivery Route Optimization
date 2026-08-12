@@ -1,1 +1,73 @@
 
+#include <stdio.h>
+#include <limits.h>
+
+#define MAX 15
+
+int n;
+int distance[MAX][MAX];
+int dp[1 << MAX][MAX];
+
+// Function to calculate minimum delivery route
+int findMinimumRoute(int visited, int current)
+{
+    // If all cities are visited,
+    // return to the starting city
+    if (visited == (1 << n) - 1)
+        return distance[current][0];
+
+    // If result is already calculated
+    if (dp[visited][current] != -1)
+        return dp[visited][current];
+
+    int minimum = INT_MAX;
+
+    // Try every unvisited city
+    for (int next = 0; next < n; next++)
+    {
+        if ((visited & (1 << next)) == 0)
+        {
+            int routeCost =
+                distance[current][next] +
+                findMinimumRoute(visited | (1 << next), next);
+
+            if (routeCost < minimum)
+                minimum = routeCost;
+        }
+    }
+
+    // Store the minimum cost
+    dp[visited][current] = minimum;
+
+    return minimum;
+}
+
+int main()
+{
+    // Number of cities
+    scanf("%d", &n);
+
+    // Input distance/cost matrix
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            scanf("%d", &distance[i][j]);
+        }
+    }
+
+    // Initialize DP table
+    for (int i = 0; i < (1 << n); i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            dp[i][j] = -1;
+        }
+    }
+
+    // Start from City 0
+    printf("Minimum Delivery Route Cost = %d\n",
+           findMinimumRoute(1, 0));
+
+    return 0;
+}
