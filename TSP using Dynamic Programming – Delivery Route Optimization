@@ -71,3 +71,11 @@ int main()
 
     return 0;
 }
+//input:
+4
+0 20 30 10
+20 0 15 25
+30 15 0 35
+10 25 35 0
+//output:
+Minimum Delivery Route Cost = 80
