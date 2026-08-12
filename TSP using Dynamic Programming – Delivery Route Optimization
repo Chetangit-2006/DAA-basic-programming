@@ -1,9 +1,6 @@
-
 #include <stdio.h>
 #include <limits.h>
-
 #define MAX 15
-
 int n;
 int distance[MAX][MAX];
 int dp[1 << MAX][MAX];
@@ -35,13 +32,10 @@ int findMinimumRoute(int visited, int current)
                 minimum = routeCost;
         }
     }
-
     // Store the minimum cost
     dp[visited][current] = minimum;
-
     return minimum;
 }
-
 int main()
 {
     // Number of cities
@@ -55,7 +49,6 @@ int main()
             scanf("%d", &distance[i][j]);
         }
     }
-
     // Initialize DP table
     for (int i = 0; i < (1 << n); i++)
     {
@@ -64,11 +57,9 @@ int main()
             dp[i][j] = -1;
         }
     }
-
     // Start from City 0
     printf("Minimum Delivery Route Cost = %d\n",
            findMinimumRoute(1, 0));
-
     return 0;
 }
 //input:
