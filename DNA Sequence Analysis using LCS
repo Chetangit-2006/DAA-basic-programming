@@ -1,1 +1,81 @@
 
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 100
+
+int max(int a, int b)
+{
+    return (a > b) ? a : b;
+}
+
+int main()
+{
+    char DNA1[MAX], DNA2[MAX];
+    int dp[MAX][MAX];
+    int i, j;
+
+    printf("Enter first DNA sequence: ");
+    scanf("%s", DNA1);
+
+    printf("Enter second DNA sequence: ");
+    scanf("%s", DNA2);
+
+    int m = strlen(DNA1);
+    int n = strlen(DNA2);
+
+    // Build LCS table
+    for (i = 0; i <= m; i++)
+    {
+        for (j = 0; j <= n; j++)
+        {
+            if (i == 0 || j == 0)
+            {
+                dp[i][j] = 0;
+            }
+            else if (DNA1[i - 1] == DNA2[j - 1])
+            {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            }
+            else
+            {
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+
+    // Find LCS
+    int length = dp[m][n];
+    char LCS[MAX];
+    LCS[length] = '\0';
+
+    i = m;
+    j = n;
+
+    while (i > 0 && j > 0)
+    {
+        if (DNA1[i - 1] == DNA2[j - 1])
+        {
+            LCS[length - 1] = DNA1[i - 1];
+            i--;
+            j--;
+            length--;
+        }
+        else if (dp[i - 1][j] > dp[i][j - 1])
+        {
+            i--;
+        }
+        else
+        {
+            j--;
+        }
+    }
+
+    printf("\n--- DNA Sequence Analysis ---\n");
+    printf("DNA Sequence 1 : %s\n", DNA1);
+    printf("DNA Sequence 2 : %s\n", DNA2);
+    printf("Longest Common Subsequence : %s\n", LCS);
+    printf("Length of LCS : %d\n", dp[m][n]);
+
+    return 0;
+}
