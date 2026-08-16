@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #define MAX 100
-
 int max(int a, int b)
 {
     return (a > b) ? a : b;
@@ -11,13 +10,10 @@ int main()
     char DNA1[MAX], DNA2[MAX];
     int dp[MAX][MAX];
     int i, j;
-
     printf("Enter first DNA sequence: ");
     scanf("%s", DNA1);
-
     printf("Enter second DNA sequence: ");
     scanf("%s", DNA2);
-
     int m = strlen(DNA1);
     int n = strlen(DNA2);
 
@@ -74,7 +70,6 @@ int main()
 //output:
 Enter first DNA sequence: ACGTAC
 Enter second DNA sequence: ACTAC
-
 --- DNA Sequence Analysis ---
 DNA Sequence 1 : ACGTAC
 DNA Sequence 2 : ACTAC
