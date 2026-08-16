@@ -71,3 +71,12 @@ int main()
     printf("Length of LCS : %d\n", dp[m][n]);
     return 0;
 }
+//output:
+Enter first DNA sequence: ACGTAC
+Enter second DNA sequence: ACTAC
+
+--- DNA Sequence Analysis ---
+DNA Sequence 1 : ACGTAC
+DNA Sequence 2 : ACTAC
+Longest Common Subsequence : ACTAC
+Length of LCS : 5
