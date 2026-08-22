@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <string.h>
+
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+int main() {
+    char normal[100], mutated[100];
+    int dp[100][100];
+    int i, j;
+
+    printf("Enter Normal DNA: ");
+    scanf("%s", normal);
+
+    printf("Enter Mutated DNA: ");
+    scanf("%s", mutated);
+
+    int m = strlen(normal);
+    int n = strlen(mutated);
+
+    // LCS Table
+    for (i = 0; i <= m; i++) {
+        for (j = 0; j <= n; j++) {
+
+            if (i == 0 || j == 0)
+                dp[i][j] = 0;
+
+            else if (normal[i - 1] == mutated[j - 1])
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+
+            else
+                dp[i][j] = max(dp[i - 1][j],
+                               dp[i][j - 1]);
+        }
+    }
+
+    // Construct LCS
+    int len = dp[m][n];
+    char lcs[100];
+
+    lcs[len] = '\0';
+
+    i = m;
+    j = n;
+
+    while (i > 0 && j > 0) {
+
+        if (normal[i - 1] == mutated[j - 1]) {
+            lcs[len - 1] = normal[i - 1];
+            i--;
+            j--;
+            len--;
+        }
+        else if (dp[i - 1][j] > dp[i][j - 1])
+            i--;
+        else
+            j--;
+    }
+
+    printf("\nCommon DNA Pattern: %s", lcs);
+    printf("\nLCS Length: %d", dp[m][n]);
+
+    return 0;
+}
