@@ -63,3 +63,10 @@ int main() {
 
     return 0;
 }
+
+//output:
+Enter Normal DNA: ATCGGCTA
+Enter Mutated DNA: ATGCGTA
+
+Common DNA Pattern: ATCGTA
+LCS Length: 6
