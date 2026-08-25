@@ -1,27 +1,20 @@
-
 #include <stdio.h>
 #include <math.h>
-
 #define MAX 100
-
 struct Edge {
     int u;
     int v;
     double rate;
 };
-
 int main() {
     int n, m;
     struct Edge edges[MAX];
     double dist[MAX];
     int i, j;
-
     printf("Enter number of currencies: ");
     scanf("%d", &n);
-
     printf("Enter number of exchange rates: ");
     scanf("%d", &m);
-
     printf("Enter exchange rates (from to rate):\n");
 
     for (i = 0; i < m; i++) {
@@ -33,12 +26,10 @@ int main() {
         // Convert exchange rate into edge weight
         edges[i].rate = -log(edges[i].rate);
     }
-
     // Initialize distances
     for (i = 0; i < n; i++) {
         dist[i] = 0;
     }
-
     // Bellman-Ford Algorithm
     for (i = 1; i <= n - 1; i++) {
         for (j = 0; j < m; j++) {
@@ -57,13 +48,11 @@ int main() {
 
         if (dist[edges[j].v] >
             dist[edges[j].u] + edges[j].rate) {
-
             printf("\nArbitrage opportunity detected!\n");
             return 0;
         }
     }
 
     printf("\nNo arbitrage opportunity found.\n");
-
     return 0;
 }
