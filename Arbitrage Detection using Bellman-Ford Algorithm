@@ -56,3 +56,14 @@ int main() {
     printf("\nNo arbitrage opportunity found.\n");
     return 0;
 }
+//output:
+Enter number of currencies: 3
+Enter number of exchange rates: 6
+
+Enter exchange rates (from to rate):
+0 1 0.9
+1 0 1.12
+1 2 0.85
+2 1 1.18
+0 2 0.76
+2 0 1.35
