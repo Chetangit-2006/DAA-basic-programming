@@ -45,3 +45,5 @@ int main() {
 
     return 0;
 }
+Posts reached using DFS:
+Post 0 Post 1 Post 3 Post 2 Post 4 Post 5
