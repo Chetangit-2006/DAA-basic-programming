@@ -1,1 +1,119 @@
 
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX 20
+
+// Declare board to place antennas
+int board[MAX][MAX];
+
+// Function to check whether an antenna can be safely placed
+bool isSafe(int row, int col, int N)
+{
+    int i, j;
+
+    // Check left side of the same row
+    for (i = 0; i < col; i++)
+    {
+        if (board[row][i])
+            return false;
+    }
+
+    // Check upper-left diagonal
+    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
+    {
+        if (board[i][j])
+            return false;
+    }
+
+    // Check lower-left diagonal
+    for (i = row, j = col; i < N && j >= 0; i++, j--)
+    {
+        if (board[i][j])
+            return false;
+    }
+
+    return true;
+}
+
+// Backtracking function to place antennas column by column
+bool solveNQueens(int col, int N)
+{
+    // All antennas have been placed
+    if (col >= N)
+        return true;
+
+    // Try placing an antenna in each row
+    for (int i = 0; i < N; i++)
+    {
+        if (isSafe(i, col, N))
+        {
+            // Place antenna
+            board[i][col] = 1;
+
+            // Recursively place antennas in next column
+            if (solveNQueens(col + 1, N))
+                return true;
+
+            // Backtrack
+            board[i][col] = 0;
+        }
+    }
+
+    return false;
+}
+
+// Function to display the final board
+void printSolution(int N)
+{
+    // Display final antenna placement
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            if (board[i][j] == 1)
+                printf("A ");
+            else
+                printf(". ");
+        }
+        printf("\n");
+    }
+}
+
+// Main function
+int main()
+{
+    int N;
+
+    printf("antennas(N): ");
+    scanf("%d", &N);
+
+    // Check valid input
+    if (N <= 0 || N > MAX)
+    {
+        printf("Invalid\n");
+        return 0;
+    }
+
+    // Initialize board
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            board[i][j] = 0;
+        }
+    }
+
+    // Solve using backtracking
+    if (solveNQueens(0, N))
+    {
+        printf("Successful Placement\n");
+        printSolution(N);
+    }
+    else
+    {
+        printf("No solution exists");
+    }
+
+    return 0;
+}
